@@ -1,0 +1,16 @@
+[
+    {
+        "id": 0,
+        "nombre": "TRATAMIENTO ANTI CAÍDA",
+        "precio": "$13.000",
+        "duracion": 25,
+        "descripcion": "La caída parcial o gradual del cabello es un problema común en este tiempo. Es por eso que te ofrecemos un tratamiento magistral de la linea Sir Fausto, que consiste en exfoliar el cabello con un shampoo de carbón y luego aplicar el shampoo caída Sir fausto, terminado con su tónico de quina, ortiga y obedul Sir fausto"
+    },
+    {
+        "id": 1,
+        "nombre": "CORTE DE CABELLO",
+        "precio": "$10.000",
+        "duracion": 45,
+        "descripcion": "Partimos lavando tu cabello, luego continuamos con unos minutos de consultas para así, ayudarte a escoger el look más apropiado para ti de acuerdo a tu cabello, rostro y gustos. NOTA: (El barbero realiza todo el servicio con mascarilla)"
+    }
+]
