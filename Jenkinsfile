@@ -45,8 +45,8 @@ pipeline {
         sh 'rm -rf /var/www/barber'
         sh 'mkdir /var/www/barber'
         sh 'cp -Rp build/** /var/www/barber'
-        sh 'docker stop barber || true && docker rm test-project || true'
-        sh 'docker run -dit --name barber -p 8001:80 -v /var/www/barber/:/usr/local/apache2/htdocs/ httpd:2.4'
+        sh 'docker stop barber || true && docker rm barber || true'
+        sh 'docker run -dit --name barber -p 8007:80 -v /var/www/barber/:/usr/local/apache2/htdocs/ httpd:2.4'
       }
     }
   }
