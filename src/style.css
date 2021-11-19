@@ -1,0 +1,38 @@
+body {
+  overflow-x: hidden;
+}
+
+.home-container {
+  background-image: url("https://wallpaperaccess.com/full/1371357.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+
+  height: 100vh;
+}
+
+.home-content {
+  background-color: rgba(20, 40, 80, 0.4);
+  height: 100vh;
+}
+
+.home-img {
+  display: block;
+  margin: 0 auto;
+  padding-top: 10%;
+}
+
+.home-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  background-color: #ffce45;
+}
+
+.nav-fixed {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
