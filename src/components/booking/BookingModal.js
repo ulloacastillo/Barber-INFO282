@@ -6,7 +6,7 @@ import barberContext from "../../context/barbers/barberContext";
 
 import { Button, Modal } from "react-bootstrap";
 
-import DateButton from "../layout/DateButton";
+import axios from "axios";
 
 const BookingModal = ({ show, handleClose, service }) => {
   const datesContext = useContext(dateContext);
@@ -18,6 +18,7 @@ const BookingModal = ({ show, handleClose, service }) => {
     idSeleccionado,
     getDates,
     getHorasBarbero,
+    setCurrentDate,
   } = datesContext;
 
   const barbersContext = useContext(barberContext);
@@ -26,20 +27,42 @@ const BookingModal = ({ show, handleClose, service }) => {
   //state para mostrar resumen o calendario de reserva
   const [booking, setBooking] = useState(true);
 
+  const [clicked, setClicked] = useState(false);
+
+  const [horaClickeada, setHoraClickeada] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:5000/api/horas")
+      .then((response) => getDates(response.data.horas));
+  }, []);
+
   //traer las horas disponibles
   useEffect(() => {
-    getDates();
     getBarbers();
   }, []);
 
   const handleChange = (e) => {
     console.log(e.target.value);
     getHorasBarbero(e.target.value);
+    setCurrentDate(null);
   };
 
   const handleClick = (e) => {
     setBooking(!booking);
     getHorasBarbero(null);
+  };
+
+  const handleClickDate = (e) => {
+    if (parseInt(e.target.value) === horaClickeada) {
+      setClicked(false);
+      setCurrentDate(null);
+      setHoraClickeada(null);
+    } else {
+      setCurrentDate(parseInt(e.target.value));
+      setClicked(true);
+      setHoraClickeada(parseInt(e.target.value));
+    }
   };
 
   return (
@@ -106,10 +129,20 @@ const BookingModal = ({ show, handleClose, service }) => {
                     .filter(
                       (hora) =>
                         hora.dia === diaSeleccionado &&
-                        hora.mes === mesSeleccionado
+                        hora.mes - 1 === mesSeleccionado
                     )
                     .map((hora) => (
-                      <DateButton key={hora.id} hora={hora}></DateButton>
+                      <Button
+                        variant={
+                          hora.id_hora === horaClickeada ? "success" : "primary"
+                        }
+                        className="m-1"
+                        value={hora.id_hora}
+                        key={hora.id_hora}
+                        onClick={handleClickDate}
+                      >
+                        {hora.hora_inicial}:00 - {hora.hora_inicial + 1}:00
+                      </Button>
                     ))}{" "}
                 </>
               ) : null}

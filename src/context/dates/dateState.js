@@ -12,49 +12,6 @@ import {
 } from "../../types/index";
 
 const DateState = (props) => {
-  const horas = [
-    {
-      idEstilista: 1,
-      dia: 11,
-      mes: 11,
-      horaInicial: 10,
-      disponible: true,
-      id: 1,
-    },
-    {
-      idEstilista: 1,
-      dia: 11,
-      mes: 11,
-      horaInicial: 11,
-      disponible: true,
-      id: 2,
-    },
-    {
-      idEstilista: 1,
-      dia: 12,
-      mes: 11,
-      horaInicial: 12,
-      disponible: false,
-      id: 3,
-    },
-    {
-      idEstilista: 2,
-      dia: 16,
-      mes: 11,
-      horaInicial: 9,
-      disponible: true,
-      id: 4,
-    },
-    {
-      idEstilista: 3,
-      dia: 22,
-      mes: 11,
-      horaInicial: 10,
-      disponible: true,
-      id: 5,
-    },
-  ];
-
   const initialState = {
     horas: [],
     horasBarbero: [],
@@ -65,7 +22,7 @@ const DateState = (props) => {
 
   const [state, dispatch] = useReducer(dateReducer, initialState);
 
-  const getDates = () => {
+  const getDates = (horas) => {
     dispatch({ type: GET_DATES, payload: horas });
   };
 

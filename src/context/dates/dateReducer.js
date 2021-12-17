@@ -24,7 +24,7 @@ export default (state, action) => {
       return {
         ...state,
         horasBarbero: state.horas.filter(
-          (hora) => hora.idEstilista === parseInt(action.payload)
+          (hora) => hora.id_barbero === parseInt(action.payload)
         ),
       };
 
